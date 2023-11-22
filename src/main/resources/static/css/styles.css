@@ -1,0 +1,39 @@
+body {
+    background-color: #f2f2f2;
+    width: 95%;
+    margin: 0px auto;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    background-color: #c5acd5;
+}
+
+table,
+td,
+th {
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #4609b9;
+}
+.red{
+    background-color: antiquewhite;
+}
+.blue{
+    background-color: rgb(133, 165, 235);
+}
+.text{
+    color: blue;
+}

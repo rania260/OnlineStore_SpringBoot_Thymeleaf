@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <script type="text/javascript"></script>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" type="text/css">
+</head>
+
+<body>
+  <img th:src="@{/images/logo.png}" alt="" class="logo">
+  <h1>Product List</h1>
+  <table>
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Image</th>
+      <th>Actions</th>
+    </tr>
+    <!-- partie dynamique puisque on ne connais pas la taille des produits-->
+    <!-- <tr class="text" th:each="product,state : ${products}" th:classappend="${state.odd}?red:blue"> -->
+      <!-- sta3mlna list products li nafesha sta3mlneha fel controller-->
+    <tr class="text" th:each="product,state : ${products}"
+      th:style="${state.odd}?'background-color: antiquewhite;':' background-color: rgb(133, 165, 235);'">
+      <td th:text="${product.code}"></td>
+      <td th:text="${product.name}"></td>
+      <td th:text="${product.price}"></td>
+      <td th:text="${product.quantity }"></td>
+      <td>
+        <!--  <th:block th:if="${product.image}">
+                <img th:src="@{|/images/${product.image}|}" alt="" width="100px" height="100px">
+            </th:block>
+            <th:block  th:unless="${product.image}">
+                <img th:src="@{/images/no-image.png}" alt="" width="100px" height="100px">
+            </th:block> -->
+
+            <!-- si condition ? val1 : sinon val2-->
+        <img th:src="${product.image}?@{|/images/${product.image}|}:@{/images/no-image.png}" width="50px" height="50px">
+      </td>
+      <td>
+        <form th:action="@{|products/${product.id}/edit|}">
+          <input type="submit" value="Edit">
+        </form>
+        <form th:action="@{|products/${product.id}/delete|}" method="post">
+          <input type="submit" value="Delete">
+        </form>
+      </td>
+    </tr>
+    
+  </table>
+  <form th:action="@{/products/create}">
+    <input type="submit" value="AddProduct">
+  </form>
+</body>
+
+</html>
